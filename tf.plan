@@ -1,0 +1,164 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_internet_gateway.mygw will be created
+  + resource "aws_internet_gateway" "mygw" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "Deva_main_IG"
+        }
+      + tags_all = {
+          + "Name" = "Deva_main_IG"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # aws_route_table.myroute1 will be created
+  + resource "aws_route_table" "myroute1" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "Deva-routetable"
+        }
+      + tags_all         = {
+          + "Name" = "Deva-routetable"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # aws_route_table_association.myroute1_association will be created
+  + resource "aws_route_table_association" "myroute1_association" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # aws_security_group.mysg will be created
+  + resource "aws_security_group" "mysg" {
+      + arn                    = (known after apply)
+      + description            = "Managed by Terraform"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = "allow_ssh_http"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "Deva_allow_ssh_https"
+        }
+      + tags_all               = {
+          + "Name" = "Deva_allow_ssh_https"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_subnet.subnet2 will be created
+  + resource "aws_subnet" "subnet2" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = (known after apply)
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "100.100.5.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "Name" = "Deva-main-vpc-subnet2"
+        }
+      + tags_all                                       = {
+          + "Name" = "Deva-main-vpc-subnet2"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # aws_vpc.myvpc1 will be created
+  + resource "aws_vpc" "myvpc1" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "100.100.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = (known after apply)
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Name" = "Deva-main-vpc1"
+        }
+      + tags_all                             = {
+          + "Name" = "Deva-main-vpc1"
+        }
+    }
+
+  # aws_vpc_security_group_egress_rule.allow_all_traffic_ipv4 will be created
+  + resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + id                     = (known after apply)
+      + ip_protocol            = "-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_http_ipv4 will be created
+  + resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + from_port              = 80
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 80
+    }
+
+  # aws_vpc_security_group_ingress_rule.allow_ssh_ipv4 will be created
+  + resource "aws_vpc_security_group_ingress_rule" "allow_ssh_ipv4" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + from_port              = 22
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 22
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
